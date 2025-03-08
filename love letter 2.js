@@ -20,8 +20,22 @@ function onYouTubeIframeAPIReady() {
 }
 
 $(document).ready(function () {
+  // Đếm lượt truy cập khi trang tải xong
+fetch('https://api.countapi.xyz/hit/dongngac8march/visits')
+.then(response => response.json())
+.then(data => {
+  console.log(`Trang web đã được xem ${data.value} lần`);
+  // Nếu muốn hiển thị số lượt truy cập trên trang:
+  // $('body').append(`<div style="position:fixed;bottom:10px;right:10px;background:white;padding:5px;border-radius:5px;">Số lượt truy cập: ${data.value}</div>`);
+});
 
   envelope.click(function () {
+    // Đếm số lần phong bì được mở
+fetch('https://api.countapi.xyz/hit/dongngac8march/envelopes_opened')
+.then(response => response.json())
+.then(data => {
+  console.log(`Phong bì đã được mở ${data.value} lần`);
+});
     open();
   });
   btn_open.click(function () {
